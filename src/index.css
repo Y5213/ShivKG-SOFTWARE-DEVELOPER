@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+@import "tailwindcss";
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  
+  /* Minimal Editorial Charcoal Color System */
+  --bg-deep: #0e0e11;          /* Deep Charcoal Page Background */
+  --bg-surface: rgba(22, 22, 26, 0.92); /* Muted Card Surface Background with High Contrast */
+  --bg-elevated: #1d1d22;      /* Elevated Card Hover Background */
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-line: #27272a;
+  
+  /* Moonlight Silver Accent System (Cool Muted Platinum) */
+  --accent-silver: #d4d8de;
+  --accent-silver-dim: rgba(212, 216, 222, 0.12);
+  --accent-silver-glow: rgba(212, 216, 222, 0.2);
+
+  /* High-Readability Editorial Colors */
+  --text-main: #f4f4f6;        /* Warm Off-White */
+  --text-muted: #a1a1aa;       /* Soft Muted Gray */
+  --text-dim: #71717a;         /* Subdued Metal Gray */
+  
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-full: 9999px;
+}
+
+/* Reset & Base Setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  height: 100dvh;
+  width: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  overflow: hidden;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* Full-Bleed Moonlight Background Overlay Container */
+.site-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to bottom, rgba(14, 14, 17, 0.88) 0%, rgba(14, 14, 17, 0.78) 50%, rgba(14, 14, 17, 0.90) 100%),
+    url('/bg-moonlight.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .site-bg-overlay {
+    background-attachment: fixed;
+  }
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: var(--text-muted);
+}
+
+/* Layout Container */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* Section Header Styles - Moonlight Silver Typography */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-silver);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.5;
+}
+
+/* Moonlight Silver Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  border: none;
+  outline: none;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary-silver {
+  background: var(--accent-silver);
+  color: #0e0e11;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(212, 216, 222, 0.15);
+}
+
+.btn-primary-silver:hover {
+  background: #e2e5e9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 216, 222, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(22, 22, 26, 0.6);
+  color: var(--text-main);
+  border: 1px solid var(--border-line);
+  backdrop-filter: blur(4px);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(212, 216, 222, 0.5);
+  color: var(--accent-silver);
+  background: rgba(212, 216, 222, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Atmospheric Glow Classes for Cards & Hover States */
+.card-glow-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glow-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 216, 222, 0.4);
+  box-shadow: 0 12px 32px -8px rgba(212, 216, 222, 0.15), 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom Scrollbar for Mobile & Inner Content */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-silver);
+}
+
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+}
